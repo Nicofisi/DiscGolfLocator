@@ -10,6 +10,15 @@ It's a solo/personal project built to actually re-survey a real course, not a de
 
 Consumer phone GPS reports "accuracy: 3m" but a single reading can still drift meters away from the truth, especially under tree cover. The fix isn't a better one-shot reading — it's averaging many readings the right way, over enough time for satellite geometry to change, and throwing out the outliers. That's what this app automates.
 
+## The goal
+
+This app isn't the end product — it's a survey tool that feeds back into UDisc. The final, averaged coordinates get entered into UDisc's course editor to replace the rough pins that were dropped by walking-and-tapping. Two things improve once that's done:
+
+- **On the course**, players get an accurate "distance to basket" readout instead of one that's off by 10+ meters near the tee or in the trees, and tee-to-basket hole distances are actually correct instead of estimated from a sloppy pin.
+- **At home**, anyone checking the course map beforehand sees baskets and tee pads roughly where they really are, instead of scattered pins that don't match the terrain.
+
+Re-measuring each point across multiple days (see multi-session merging below) exists specifically to squeeze out the last bit of systematic error before that coordinate goes live for everyone else using the course.
+
 ## How it works
 
 1. **Raw GPS, not fused location.** The app talks directly to `LocationManager.GPS_PROVIDER` and the `GnssStatus` API instead of Android's fused/network location, so it sees real per-fix accuracy and satellite data instead of a smoothed, cached estimate.
