@@ -2,22 +2,9 @@
 
 **Solving the "GPS says 12 meters, I'm standing on the basket" problem.**
 
-Disc golf apps like UDisc let you drop a pin on a map for each tee and basket — but a single GPS reading in a forest is often off by 10-15 meters thanks to multipath (signal bouncing off trees and canopy before it reaches your phone). Disc Golf Locator is an Android app that fixes this the way surveyors do: instead of trusting one noisy fix, it collects raw GPS samples over time, runs them through a proper statistical pipeline, and gives you a position accurate to sub-meter level — plus the error metrics to prove it.
+Disc golf apps like UDisc let you drop a pin for each tee and basket, but a single GPS reading under tree cover is often off by 10-15 meters — signal bounces off trunks and canopy (multipath) before it ever reaches your phone. This app exists so I can fix that at the source: it collects raw GPS samples over time, runs them through a proper statistical pipeline the way surveyors do, and produces a coordinate accurate to sub-meter level, with the error metrics to prove it — which then gets typed back into UDisc's course editor by hand. Two things improve once that happens: players get an accurate "distance to basket" readout on the course (and correct tee-to-basket hole distances), and anyone checking the course map from home sees baskets and tee pads roughly where they really are instead of scattered, sloppy pins.
 
 It's a solo/personal project built to actually re-survey a real course, not a demo.
-
-## The problem, briefly
-
-Consumer phone GPS reports "accuracy: 3m" but a single reading can still drift meters away from the truth, especially under tree cover. The fix isn't a better one-shot reading — it's averaging many readings the right way, over enough time for satellite geometry to change, and throwing out the outliers. That's what this app automates.
-
-## The goal
-
-This app isn't the end product — it's a survey tool that feeds back into UDisc. The final, averaged coordinates get entered into UDisc's course editor to replace the rough pins that were dropped by walking-and-tapping. Two things improve once that's done:
-
-- **On the course**, players get an accurate "distance to basket" readout instead of one that's off by 10+ meters near the tee or in the trees, and tee-to-basket hole distances are actually correct instead of estimated from a sloppy pin.
-- **At home**, anyone checking the course map beforehand sees baskets and tee pads roughly where they really are, instead of scattered pins that don't match the terrain.
-
-Re-measuring each point across multiple days (see multi-session merging below) exists specifically to squeeze out the last bit of systematic error before that coordinate goes live for everyone else using the course.
 
 ## How it works
 
