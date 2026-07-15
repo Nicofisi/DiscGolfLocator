@@ -49,7 +49,7 @@ Personal project, used to re-survey a real course hole by hole. Not published to
 ## Building
 
 ```
-git clone <this repo>
+git clone https://github.com/Nicofisi/DiscGolfLocator.git
 cd DiscGolfLocator
 ./gradlew assembleDebug
 ```
